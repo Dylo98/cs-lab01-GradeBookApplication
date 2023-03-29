@@ -12,5 +12,20 @@ namespace GradeBook.GradeBooks
         {
             Type = Enums.GradeBookType.Ranked;
         }
+        public override char GetLetterGrade(double averageGrade)
+        {
+            if (Students.Count < 5)
+                throw new InvalidOperationException("There must be more than 5 students.");
+            if (averageGrade <= 20)
+                return 'F';
+            else if (averageGrade > 20 && averageGrade <= 40)
+                return 'D';
+            else if (averageGrade > 40 && averageGrade <= 60)
+                return 'C';
+            else if (averageGrade > 60 && averageGrade <= 80)
+                return 'B';
+            else
+                return 'A';
+        }
     }
 }
